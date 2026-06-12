@@ -1,14 +1,13 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+const path = require("path");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  outputFileTracingRoot: path.join(__dirname, "./"),
   allowedDevOrigins: ["*.preview.same-app.com"],
   images: {
-    unoptimized: true,
-    domains: [
-      "source.unsplash.com",
-      "images.unsplash.com",
-      "ext.same-assets.com",
-      "ugc.same-assets.com",
-    ],
+    // Enable Next.js image optimization (served from the Vercel Image Optimization CDN)
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: "https",

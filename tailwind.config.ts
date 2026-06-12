@@ -1,80 +1,60 @@
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 
-export default {
-  darkMode: ["class"],
+const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
-        },
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
-        },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))'
-        }
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
-      },
-      container: {
+    container: {
       center: true,
       padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "4rem",
+        xl: "5rem",
+        "2xl": "6rem",
       },
-      screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
+    },
+    extend: {
+      colors: {
+        bg: { DEFAULT: "var(--bg)", soft: "var(--bg-soft)" },
+        surface: { DEFAULT: "var(--surface)" },
+        text: {
+          DEFAULT: "var(--text)",
+          mute: "var(--text-mute)",
+          subtle: "var(--text-subtle)",
+          faint: "var(--text-faint)",
+        },
+        primary: { DEFAULT: "var(--primary)", fg: "var(--primary-fg)" },
+        secondary: { DEFAULT: "var(--secondary)", fg: "var(--secondary-fg)" },
+        accent: { DEFAULT: "var(--accent)" },
+        success: "var(--success)",
+        warning: "var(--warning)",
+        danger: "var(--danger)",
       },
+      backgroundImage: {
+        "hero-mesh":
+          "radial-gradient(120% 120% at 50% 0%, rgba(124,58,237,0.28) 0%, rgba(6,182,212,0.12) 50%, rgba(15,23,42,0.6) 100%), radial-gradient(160% 120% at 0% 80%, rgba(163,230,53,0.12), transparent)",
+      },
+      boxShadow: {
+        "floating-card": "0 25px 60px -20px rgba(15,23,42,0.55)",
+        "glass-card": "0 12px 32px rgba(8,15,30,0.45)",
+      },
+      borderRadius: {
+        xl: "1rem",
+        "2xl": "1.25rem",
+        "3xl": "1.75rem",
+      },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },
   plugins: [animate],
-} satisfies Config;
+};
+
+export default config;

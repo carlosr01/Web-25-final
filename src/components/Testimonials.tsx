@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 import { Reveal } from '@/components/ui/reveal'
+import { cn } from '@/lib/utils'
 
 const TESTIMONIALS = [
   {
@@ -38,27 +39,27 @@ export default function Testimonials() {
   }
 
   return (
-    <section id="resultados" className="py-20 bg-gradient-to-b from-[#0f172a] to-[#0a0f1e]">
+    <section id="resultados" className="py-20 bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">Resultados y prueba social</h2>
-          <p className="text-center text-gray-400 mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4 tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>Resultados y prueba social</h2>
+          <p className="text-center text-slate-200 mb-12">
             +500 entregas exitosas en banca, retail, salud y educación. De pilotos ágiles a despliegues productivos con uptime y soporte.
           </p>
         </Reveal>
-
+ 
         <Reveal delay={0.2}>
           <div className="relative">
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-3xl p-12 border border-white/10 shadow-2xl max-w-4xl mx-auto">
-              <Quote className="w-12 h-12 text-cyan-400 mb-6" />
-              <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-8">
+            <div className="bg-white/[0.02] border border-white/5 shadow-glass-card hover:border-white/10 hover:bg-white/[0.03] transition-all duration-300 backdrop-blur-md rounded-3xl p-8 md:p-12 max-w-4xl mx-auto">
+              <Quote aria-hidden className="w-12 h-12 text-secondary-fg mb-6" />
+              <p className="text-slate-200 text-lg md:text-xl leading-relaxed mb-8">
                 {current.quote}
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600"></div>
+                <div aria-hidden className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary-fg to-primary"></div>
                 <div>
                   <h4 className="font-semibold text-white text-lg">{current.name}</h4>
-                  <p className="text-cyan-400 text-sm">{current.role}</p>
+                  <p className="text-secondary-fg text-sm">{current.role}</p>
                 </div>
               </div>
             </div>
@@ -66,7 +67,7 @@ export default function Testimonials() {
             <button
               type="button"
               onClick={prev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-cyan-500 hover:bg-cyan-600 flex items-center justify-center text-white transition-colors shadow-lg"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary hover:bg-primary/90 active:bg-primary/80 flex items-center justify-center text-primary-fg transition-colors shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent sm:left-0 sm:-translate-x-4"
               aria-label="Ver testimonio anterior"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -75,22 +76,32 @@ export default function Testimonials() {
             <button
               type="button"
               onClick={next}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-cyan-500 hover:bg-cyan-600 flex items-center justify-center text-white transition-colors shadow-lg"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary hover:bg-primary/90 active:bg-primary/80 flex items-center justify-center text-primary-fg transition-colors shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent sm:right-0 sm:translate-x-4"
               aria-label="Ver siguiente testimonio"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-3 mt-8">
               {TESTIMONIALS.map((_, index) => (
                 <button
                   key={index}
                   type="button"
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all ${index === currentIndex ? 'bg-cyan-400 w-8' : 'bg-gray-600 w-2'}`}
+                  className={cn(
+                    'flex h-12 w-12 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-fg/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent',
+                    index === currentIndex ? 'bg-secondary-fg/20' : 'bg-white/5 hover:bg-white/10 active:bg-white/15'
+                  )}
                   aria-label={`Mostrar testimonio ${index + 1}`}
-                  aria-current={index === currentIndex}
-                />
+                  aria-current={index === currentIndex ? 'true' : undefined}
+                >
+                  <span
+                    className={cn(
+                      'h-2.5 w-2.5 rounded-full transition-transform',
+                      index === currentIndex ? 'bg-secondary-fg scale-110' : 'bg-slate-400/70'
+                    )}
+                  />
+                </button>
               ))}
             </div>
           </div>

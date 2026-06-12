@@ -5,21 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg]:h-5 [&_svg]:w-5 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--border-glow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)] disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg]:h-5 [&_svg]:w-5 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         primary:
-          "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30 hover:-translate-y-0.5 hover:bg-cyan-400 hover:shadow-cyan-400/40 focus-visible:ring-cyan-300",
+          "border border-[color:var(--border-strong)] bg-primary text-primary-fg shadow-floating-card hover:-translate-y-0.5 hover:bg-[color:rgba(124,58,237,0.88)]",
         secondary:
-          "border border-white/15 bg-white/5 text-white shadow-sm hover:-translate-y-0.5 hover:bg-white/10 focus-visible:ring-white/30",
+          "border border-[color:var(--border-subtle)] bg-[color:rgba(10,18,33,0.7)] text-text shadow-glass-card hover:-translate-y-0.5 hover:bg-[color:rgba(12,20,37,0.88)]",
         outline:
-          "border border-cyan-300 bg-transparent text-cyan-100 shadow-sm hover:-translate-y-0.5 hover:bg-cyan-500/10 focus-visible:ring-cyan-300",
+          "border border-[color:var(--border-strong)] bg-transparent text-primary shadow-sm hover:-translate-y-0.5 hover:bg-[color:rgba(124,58,237,0.12)]",
         ghost:
-          "bg-transparent text-gray-300 hover:-translate-y-0.5 hover:text-white hover:bg-white/10 focus-visible:ring-white/20",
+          "bg-transparent text-text-mute hover:-translate-y-0.5 hover:bg-[color:rgba(12,20,37,0.7)] hover:text-primary",
         destructive:
-          "bg-red-500 text-white shadow-sm hover:-translate-y-0.5 hover:bg-red-600 focus-visible:ring-red-400",
-        link: "text-cyan-400 underline-offset-4 hover:text-cyan-300 hover:underline",
+          "bg-danger text-white shadow-sm hover:-translate-y-0.5 hover:bg-[color:rgba(248,113,113,0.85)]",
+        link: "text-primary underline-offset-4 hover:text-secondary-fg hover:underline",
       },
       size: {
         default: "h-11 px-6 text-sm md:text-base",
